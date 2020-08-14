@@ -19,4 +19,16 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/home', 'HomeController@index')->name('home');
+});
+
+
+ 
+Route::group(['prefix' => 'api',  'middleware' => 'auth'], function () {
+    Route::get('todos', 'TodoController@index');
+    Route::post('todo', 'TodoController@store');
+    Route::put('todo', 'TodoController@update');
+    Route::put('todo/check/{id}', 'TodoController@check');
+    Route::delete('todo/{id}', 'TodoController@destroy');
+});
