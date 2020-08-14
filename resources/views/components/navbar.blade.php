@@ -5,5 +5,19 @@
                 style="opacity: .8">
             <span class="brand-text font-weight-light">LaravelDemo</span>
         </a>
+        <ul class="navbar-nav ml-auto">
+
+
+            <li class="nav-item">
+                <a class="nav-link" data-widget="control-sidebar" data-slide="true" role="button" href="{{ route('logout') }}"
+                onclick="event.preventDefault();
+                              document.getElementById('logout-form').submit();">
+                   Logout
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+            </li>
+        </ul>
     </div>
 </nav>
